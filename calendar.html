@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日历</title>
+    <script src="./js/common.js"></script>
+    <link rel="stylesheet" href="./css/public.css">
+    <link rel="stylesheet" href="./css/calendar.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vant@2.9/lib/index.css" />
+    <!-- 引入 Vue 和 Vant 的 JS 文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vant@2.9/lib/vant.min.js"></script>
+</head>
+
+<body>
+    <div class="calendar" id="calendar">
+        <header>
+            <h1> 我的礼品卡</h1>
+        </header>
+        <main>
+            <div class="calendarView">
+                <van-calendar title="我的配送日历" :poppable="false" :min-date="minDate" :show-confirm="false"
+                    :style="{ height: '372px' }" row-height="46" :formatter="formatterMyCalendar" />
+            </div>
+            <div class="shopInfo">
+                <p>耘丰谷火山岩米来自火山边沿限量种植，吃了可以做神仙，吃过返寻味大米 5KG。</p>
+                <div class="surplusNum">余粮 X2</div>
+            </div>
+            <div class="setting">
+                <span>从</span>
+                <div class="date">
+                    <van-datetime-picker v-model="currentDate" type="date" :show-toolbar="false" visible-item-count="1"
+                        item-height="40" :min-date="minDate" ref="myDate" />
+                </div>
+                <span>每</span>
+                <div class="myPicker">
+                    <van-picker title=" " :columns="columns" :show-toolbar="false" visible-item-count="1"
+                        :default-index="pickerIndex1" @change="dateChange" />
+                </div>
+                <span>天</span>
+                <div class="myPicker">
+                    <van-picker title=" " show-toolbar :columns="columns" :show-toolbar="false" visible-item-count="1"
+                        :default-index="pickerIndex2" @change="numberChange" />
+                </div>
+                <span>份</span>
+            </div>
+        </main>
+        <footer>
+            <button @click="saveSetting">保存设置</button>
+        </footer>
+    </div>
+    <script>
+        new Vue({
+            el: '#calendar',
+            data() {
+                return {
+                    minDate: new Date(2019, 0, 1),
+                    currentDate: new Date(),  //时间控件当前日期
+                    columns: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                    pickerIndex1: 2,
+                    pickerIndex2: 0
+                }
+            },
+            methods: {
+                //日历文案
+                formatterMyCalendar: function (day) {
+                    console.log(day)
+                    const month = day.date.getMonth() + 1;
+                    const date = day.date.getDate();
+
+                    if (month === 8) {
+                        if (date === 30) {
+                            day.bottomInfo = '今天';
+                        }
+                        else if(date===25){
+                            day.bottomInfo = '已发货';
+                            day.className = "delivered"
+                        } 
+                        else if(date===15){
+                            day.bottomInfo = '已发货';
+                            day.className = "delivered"
+                        }
+                        else if(date===5){
+                            day.bottomInfo = '已发货';
+                            day.className = "delivered"
+                        }
+                        else if(date===9){
+                            day.bottomInfo = '已发货';
+                            day.className = "delivered"
+                        }
+                        else if(date===31){
+                            day.bottomInfo = '未发货';
+                            day.className = "notDelivered"
+                        } 
+                    }
+
+                    if (day.type === 'start') {
+                        day.bottomInfo = '入住';
+                    } else if (day.type === 'end') {
+                        day.bottomInfo = '离店';
+                    }
+
+                    return day;
+                },
+
+                //格式化时间
+                formatterDate(date) {
+                    const nDate = new Date(date);
+                    let month = nDate.getMonth() + 1;
+                    return `${nDate.getFullYear()}/${month < 10 ? "0" + month : month}/${nDate.getDate()}`
+                },
+                //天数选择
+                dateChange: function (picker, value, index) {
+                    this.pickerIndex1 = index
+                },
+                //份数选择
+                numberChange: function (picker, value, index) {
+                    this.pickerIndex2 = index
+                },
+
+                //保存设置
+                saveSetting: function () {
+
+                    //年月日
+                    let newDate = this.formatterDate(this.currentDate);
+                    console.log('从' + newDate)
+
+                    //天
+                    let day = this.columns[this.pickerIndex1]
+                    console.log('每' + day + '天')
+                    //份
+                    let number = this.columns[this.pickerIndex2]
+                    console.log(number + '份')
+                }
+            },
+        });
+    </script>
+</body>
+
+</html>

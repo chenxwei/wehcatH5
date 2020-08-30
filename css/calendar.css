@@ -1,0 +1,108 @@
+header h1 {
+    font-size: 0.4533rem;
+    height: 1.3333rem;
+    line-height: 1.3333rem;
+    text-align: center;
+    font-weight: 600;
+    border-bottom: 0.0267rem solid #ead086;
+}
+
+main {
+    padding-top: 0.1333rem;
+    padding-bottom: 1.2rem;
+}
+
+main .calendarView {
+    /* padding-bottom: 10px; */
+    border-bottom: 0.0267rem solid #ead086;
+}
+
+/* 重置vant样式  B*/
+.van-calendar__header-title {
+    text-align: left !important;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    padding-left: 0.2667rem;
+    height: 30px !important;
+    line-height: 30px !important;
+}
+
+.van-calendar__header-subtitle {
+    height: 22px !important;
+    line-height: 22px !important;
+}
+
+.date .van-picker-column {
+    min-width: 1.3333rem;
+}
+
+.date .van-picker-column:first-child {
+    min-width: 1.6rem;
+}
+.myPicker .van-picker-column{
+    min-width: 1.6rem;
+}
+
+.van-calendar__bottom-info{
+    bottom: 0 !important;
+}
+
+/* 已发货 */
+.delivered{
+    color: green;
+}
+/* 未发货 */
+.notDelivered{
+  color: gray;
+}
+/* 重置vant样式  E*/
+
+main .shopInfo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.2667rem;
+    margin-top: 0.1333rem;
+}
+
+.shopInfo p {
+    flex: 1;
+    line-height: 0.5867rem;
+    font-size: 0.4rem;
+}
+
+.shopInfo .surplusNum {
+    font-size: 0.5067rem;
+    font-weight: 500;
+    margin-left: 0.1333rem;
+}
+
+.setting {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0.2667rem;
+}
+
+.setting span {
+    font-size: 0.48rem;
+    font-weight: 600;
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1.2rem;
+    display: flex;
+    z-index: 10;
+}
+
+footer button {
+    width: 100%;
+    font-size: 0.4267rem;
+    border: none;
+    background-color: #ead086;
+}

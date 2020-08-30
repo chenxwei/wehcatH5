@@ -6,18 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>首页</title>
+    <link rel="stylesheet" type="text/css" href="https://at.alicdn.com/t/font_2035146_yulfuftd8ja.css" />
+    <link rel="stylesheet" href="./css/public.css">
     <link rel="stylesheet" href="./css/index.css">
-    <!-- <link rel="stylesheet" href="https://unpkg.com/mint-ui/lib/style.css" rel="external nofollow" target="_blank"  rel="external nofollow" target="_blank" >
-    <script src="https://unpkg.com/mint-ui/lib/index.js" rel="external nofollow"  rel="external nofollow" ></script> -->
+    <script src="./js/common.js"></script>
     <script>
-        setSize();
-        window.addEventListener("resize", setSize, false); //监听屏幕缩放
-        window.addEventListener("orientationchange", setSize, false);  //监听屏幕竖行
-        function setSize() {
-            var html = document.getElementsByTagName("html")[0];
-            var width = html.getBoundingClientRect().width; //视口宽度
-            html.style.fontSize = width / 10 + "px"
-        };</script>
+        //逻辑JS
+        window.onload = function(){
+            document.getElementById("calendar").onclick = function(){
+              location.href ="./calendar.html"
+            }
+        }
+    </script>
 </head>
 
 <body>
@@ -26,7 +26,14 @@
             <h1> 我的礼品卡</h1>
         </header>
         <main>
-            <div class="bgPicture"></div>
+            <div class="bgPicture">
+                <nav>
+                    <span><i class="iconfont icon-daishouhuo"></i>我要一次提取</span>
+                    <span id="calendar"><i class="iconfont icon-rili"></i>日历视图</span>
+                </nav>
+                <img src="./image/bg.png" alt="">
+                <div class="number">10</div>
+            </div>
             <div class="scrollWrapper">
                 <ul>
                     <li>
@@ -34,7 +41,12 @@
                         <p>8-11</p>
                         <p>已发货</p>
                     </li>
-                    <li class="current">
+                    <li class="active">
+                        <p>周二</p>
+                        <p>8-11</p>
+                        <p>已发货</p>
+                    </li>
+                    <li>
                         <p>周二</p>
                         <p>8-11</p>
                         <p>已发货</p>
@@ -63,8 +75,8 @@
             </div>
         </main>
         <footer>
-            <button>修改发货日期</button>
-            <button>修改发货日期</button>
+            <button><i class="iconfont icon-rili"></i>修改发货日期</button>
+            <button><i class="iconfont icon-dingwei"></i>修改发货地址</button>
         </footer>
     </div>
     <script>

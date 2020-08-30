@@ -1,63 +1,123 @@
-* {
+.myCard {
     color: #000000;
-    margin: 0;
-    padding: 0;
-    font-family: "Microsoft YaHei", 微软雅黑, "MicrosoftJhengHei";
 }
 
 .myCard h1 {
     font-size: 0.4533rem;
-    height: 1.4667rem;
-    line-height: 1.4667rem;
+    height: 1.3333rem;
+    line-height: 1.3333rem;
     text-align: center;
+    font-weight: 600;
 }
 
 .bgPicture {
+    position: relative;
     width: 100%;
-    height: 7.3333rem;
-    background-image: linear-gradient(to bottom, #efe6b9, #c19f56);
+    height: 7.7333rem;
+    background-image: linear-gradient(to bottom, #efe6b9, #c4a25a);
+}
+
+.bgPicture nav {
+    width: 100%;
+    font-size: 0.4rem;
+    position: absolute;
+    height: 0.8rem;
+    top: 0.4rem;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0.3333rem;
+    box-sizing: border-box;
+}
+
+nav span {
+    letter-spacing: 0.0267rem;
+    font-weight: 600;
+    color: #cc2e20;
+}
+
+nav .iconfont {
+    color: #cc2e20;
+    margin-right: 0.1333rem;
+}
+
+.bgPicture img {
+    width: 100%;
+    max-height: 100%;
+}
+.bgPicture .number{
+    color: #ffffff;
+    font-size: 0.7733rem;
+    font-weight: 400;
+    position: absolute;
+    bottom: 1.6rem;
+    right: 1.84rem;
 }
 
 main .scrollWrapper {
     width: 100%;
-    padding: 0.3333rem 0.1333rem;
-    box-sizing: border-box;
     overflow: hidden;
 }
 
 main ul {
     display: flex;
-    flex-direction: row;
+    justify-content: space-between;
     overflow-x: auto;
     overflow-y: hidden;
-}
-
-main ul li {
-    width: 5rem;
-    list-style: none;
-    font-size: 0.3733rem;
-    border: 0.0133rem solid #ead086;
+    -webkit-overflow-scrolling: touch;
+    padding: 0.3333rem 0 0.4rem;
     margin-right: 0.1333rem;
 }
 
-main ul li.current>p:first-child {
+main ul::-webkit-scrollbar {
+    display: none;
+}
+
+main ul li {
+    width: 2.3333rem;
+    list-style: none;
+    font-size: 0.4rem;
+    font-weight: 600;
+    margin-left: 0.1333rem;
+    flex-shrink: 0;
+    white-space: nowrap;
+    box-sizing: border-box;
+    border: 0.0267rem solid #ead086;
+    border-radius: 0.1333rem;
+}
+
+main ul li.active>p:first-child {
     color: #ffffff;
     background-color: #ebd087;
 }
 
-main ul li:nth-child(4n+4) {
-    margin-right: 0;
+main ul li.active {
+    position: relative;
+}
+
+main ul li.active::after {
+    content: "";
+    display: block;
+    clear: both;
+    width: 0.24rem;
+    height: 0.24rem;
+    border-radius: 100%;
+    position: absolute;
+    left: 50%;
+    bottom: -0.3733rem;
+    background-color: #ebd087;
 }
 
 ul li p {
-    height: 0.6667rem;
-    line-height: 0.6667rem;
+    height: 0.6933rem;
+    line-height: 0.6933rem;
     text-align: center;
 }
 
 ul li p:nth-of-type(2) {
-    height: 0.7467rem;
-    line-height: 0.7467rem;
+    height: 0.7733rem;
+    line-height: 0.7733rem;
 }
 
 ul li p:not(:last-child) {
@@ -74,12 +134,15 @@ ul li p:not(:last-child) {
     justify-content: center;
     align-items: center;
     padding: 0.4rem;
-    border: 0.0133rem solid #ead086;
+    border: 0.0267rem solid #ead086;
+    border-radius: 0.1333rem;
 }
 
 .info h2 {
-    font-size: 0.4rem;
+    font-size: 0.48rem;
+    font-weight: 600;
     margin-bottom: 0.4rem;
+    letter-spacing: 0.0267rem;
 }
 
 .info p {
@@ -88,21 +151,31 @@ ul li p:not(:last-child) {
     font-size: 0.3467rem;
 }
 
-footer{
+footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0.1333rem 0.4rem;
 }
-footer button{
+
+footer button {
+    font-size: 0.4rem;
     flex: 1;
-    height: 0.9333rem;
-    text-align: center;
+    height: 1.0667rem;
     border: none;
     border-radius: 0.2667rem;
     background-color: #ebd087;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-footer button:not(:last-child){
+footer button .iconfont {
+    color: #ffffff;
+    font-size: 0.5067rem;
+    margin-right: 0.1333rem;
+}
+
+footer button:not(:last-child) {
     margin-right: 0.6667rem;
 }
